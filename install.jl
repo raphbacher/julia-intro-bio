@@ -1,5 +1,5 @@
 using Pkg
-Pkg.activate(.)
+Pkg.activate(".")
 Pkg.add("IJulia")
 Pkg.add("DifferentialEquations")
 Pkg.add("Plots")
