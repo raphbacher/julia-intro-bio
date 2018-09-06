@@ -7,5 +7,5 @@ Pkg.add("Interact")
 Pkg.add("Mux")
 Pkg.add("Blink")
 Pkg.add(PackageSpec(name="GenericSVD",rev="master"));
-Pkg.add("Pycall")
+Pkg.add("PyCall")
 Pkg.add("ForwardDiff"
