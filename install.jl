@@ -8,4 +8,4 @@ Pkg.add("Mux")
 Pkg.add("Blink")
 Pkg.add(PackageSpec(name="GenericSVD",rev="master"));
 Pkg.add("PyCall")
-Pkg.add("ForwardDiff"
+Pkg.add("ForwardDiff")
