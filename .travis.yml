@@ -13,7 +13,7 @@ install:
     - mv reveal.js-master reveal.js
 
 script:
-    - jupyter nbconvert presentation_julia_output.ipynb --to slides --reveal-prefix=reveal.js
+    - jupyter nbconvert --SlidesExporter.reveal_scroll=True presentation_julia_output.ipynb --to slides --reveal-prefix=reveal.js
 
 after_success: |
     git checkout --orphan gh-pages
