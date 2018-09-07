@@ -21,5 +21,5 @@ after_success: |
     mv presentation_julia.slides.html index.html
     git add -f --ignore-errors index.html reveal.js
     git -c user.name='travis' -c user.email='travis' commit -m init
-    git push -f -q https://$GITHUB_USER:$GITHUB_TOKEN@github.com/$TRAVIS_REPO_SLUG gh-pages
+    git push -f -q https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages
     
