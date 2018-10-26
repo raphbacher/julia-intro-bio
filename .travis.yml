@@ -1,25 +1,22 @@
 language: python
 cache: pip
-
 python:
-    - "2.7"
-
-# install jupyter and get reveal.js as we will need it to build the website
-# from Travis
+- '2.7'
 install:
-    - pip install jupyter
-    - wget https://github.com/hakimel/reveal.js/archive/master.zip
-    - unzip master.zip
-    - mv reveal.js-master reveal.js
-
+- pip install jupyter
+- wget https://github.com/hakimel/reveal.js/archive/master.zip
+- unzip master.zip
+- mv reveal.js-master reveal.js
 script:
-    - jupyter nbconvert --SlidesExporter.reveal_scroll=True presentation_julia_output.ipynb --to slides --reveal-prefix=reveal.js
-
+- jupyter nbconvert --SlidesExporter.reveal_scroll=True presentation_julia_output.ipynb
+  --to slides --reveal-prefix=reveal.js
 after_success: |
-    git checkout --orphan gh-pages
-    git rm -rf --cached .
-    mv presentation_julia_output.slides.html index.html
-    git add -f --ignore-errors index.html figs reveal.js
-    git -c user.name='travis' -c user.email='travis' commit -m init
-    git push -f -q https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages
-    
+  git checkout --orphan gh-pages
+  git rm -rf --cached .
+  mv presentation_julia_output.slides.html index.html
+  git add -f --ignore-errors index.html figs reveal.js
+  git -c user.name='travis' -c user.email='travis' commit -m init
+  git push -f -q https://$GITHUB_USER:$SECRET_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages
+env:
+  global:
+    secure: Q5sMuIrG0iU5F4kbiouFsJ8DaueEEWLWYVSVar+is9OQZFYWFajLL8QVclaAxiwpgeiHuLKpJNugFE1RVyymoG9bZx63/9zZyCO1XxfRZATkv5xT47M0ZySQbHkYZwd6c/xSQ6lVVx5YqCP9UZwX17d8PjPn+eHZfH0iDMvmhP0GefARE5x0lTTN3TpgR2cJn6DcLc56SMGB74mcxF/bNpi6EQZkkIJ7yQT42ILoZqfhRiOd+/NgWftq+1kSBZdEU+QFiQwFweJeC41rBv7SnaCbXpUZkqaf9QvH1qQXXBbpBDShnNCFALs+QNXTZLiPDAyQHM+bappEWQk4PJ1qrItfl+Sp+zVSnqSZQuyBO117nVgkPU2pNLvE0FykV0baBgGDWrXe3Z14/QIoiJnhBoz7t3g28Kzpwvr96SZU5QYnnnDxo3IGrVDAYQw1++2Ze+3bk+19cfYzcrfYczwGV2DBi1vIzmReZGX47qV/zR70SCj4Id5Jl6Rkp/F5GRRYC7dIQDZQoGmI/ZQoVYIUNz+4rWcwpKSngZ2VFlwzmphIk8d64HETcJQLa47hQkU4tMbB0BbjHvf/uqr3ZOVniI+v3i0+Rk4MDX/v3DOazhUVi8W2W9V0xgiC0kVtm5Y3Ie86xNC/UEcTfeNC9MYAI7wy/mgw79ezZ359h0rWnqw=
